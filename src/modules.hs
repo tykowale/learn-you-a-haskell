@@ -1,6 +1,7 @@
 import Data.List
 import Data.Char
 import qualified Data.Map as Map
+import Geometry
 
 phoneBook :: Map.Map String String
 phoneBook = Map.fromList
@@ -38,3 +39,10 @@ firstTo n = find (\x -> digitSum x == n) [1..]
 
 findKey :: (Eq k) => k -> [(k, v)] -> Maybe v
 findKey key = foldr (\(k, v) acc -> if key == k then Just v else acc) Nothing
+
+string2digits :: String -> [Int]
+string2digits = map digitToInt . filter isDigit
+
+phoneBookToMap :: (Ord k) => [(k, String)] -> Map.Map k String
+phoneBookToMap xs = Map.fromListWith add xs
+    where add number1 number2 = number1 ++ ", " ++ number2
