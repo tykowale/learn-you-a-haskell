@@ -27,3 +27,4 @@ rectArea a b = a * b
 
 cuboidArea :: Float -> Float -> Float -> Float
 cuboidArea a b c = rectArea a b * 2 + rectArea a c * 2 + rectArea c b * 2
+

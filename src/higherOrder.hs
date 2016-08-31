@@ -53,28 +53,28 @@ numLongChains = length (filter' isLong (map' chain [1..100]))
     where isLong xs = length xs > 15
 
 sum' :: (Num a) => [a] -> a
-sum' = foldl (+) 0
+sum' = sum
 
 map'' :: (a -> b) -> [a] -> [b]
 map'' f = foldr (\x acc -> f x : acc) []
 
 elem' :: (Eq a) => a -> [a] -> Bool
-elem' y = foldr (\x acc -> if x == y then True else acc) False
+elem' y = foldr (\x acc -> (x == y) || acc) False
 
 maximum' :: (Ord a) => [a] -> a
-maximum' = foldl1 max
+maximum' = maximum
 
 reverse' :: [a] -> [a]
 reverse' = foldl (flip (:)) []
 
 product' :: (Num a) => [a] -> a
-product' = foldl (*) 1
+product' = product
 
 last' :: [a] -> a
 last' = foldl1 (\_ x -> x)
 
 and' :: [Bool] -> Bool
-and' = foldr (&&) True
+and' = and
 
 sqrtSums :: Int
 sqrtSums = length (takeWhile (<1000) (scanl1 (+) (map sqrt [1..]))) + 1
